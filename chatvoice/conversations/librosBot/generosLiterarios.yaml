@@ -1,0 +1,19 @@
+# Conversation example for simple hello
+
+plugins:
+    - generos
+
+strategies:
+    reaccionMiedo:
+        - say "Esos me dan mucho miedo :s, pero te puedo recomendar algunos libros :)"
+    reaccionTernura:
+        - say "Son mis favoritos, siempre tienen un final increible :)"
+          
+
+script:
+    - say "Estos son algunos géneros que te pueden gustar :)"
+    - generos.generosLiterarios()
+    - say "¿Qué género te gusta más {}?".format(name)
+    - input status | asign terror:Terror fantasia:Fantasia
+    - if status == "Terror" then solve reaccionMiedo
+    - if status == "Fantasia" then solve reaccionTernura
