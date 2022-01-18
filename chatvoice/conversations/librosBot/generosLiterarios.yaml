@@ -1,19 +1,22 @@
-# Conversation example for simple hello
+# El usuario escoge que tipo de genero quiere platicar con el bot
+# Se escoge un genero y la conversacion se enfoca en dicho tema
 
 plugins:
     - generos
+    - terrorP
 
 strategies:
-    reaccionMiedo:
-        - say "Esos me dan mucho miedo :s, pero te puedo recomendar algunos libros :)"
     reaccionTernura:
         - say "Son mis favoritos, siempre tienen un final increible :)"
-          
+    terror:
+        - say "¿Que te gustaria visualizar del genero Terror?"
+        - input interes
+        - terrorP.terror(interes)
 
 script:
     - say "Estos son algunos géneros que te pueden gustar :)"
     - generos.generosLiterarios()
     - say "¿Qué género te gusta más {}?".format(name)
-    - input status | asign terror:Terror fantasia:Fantasia
-    - if status == "Terror" then solve reaccionMiedo
+    - input status | asign terror:Terror fantasia:Fantasia ficcion:Ficcion infantiles:Infantiles suspenso:Suspenso historicos:Historicos romance:Romance policiaco:Policiaco comedia:Comedia divulgacion:Cientifica psicologicos:Psicologicos poesia:Poesia superacion:Personal
+    - if status == "Terror" then solve terror
     - if status == "Fantasia" then solve reaccionTernura
