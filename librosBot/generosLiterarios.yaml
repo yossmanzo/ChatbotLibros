@@ -3,20 +3,11 @@
 
 plugins:
     - generos
-    - terrorP
-
-strategies:
-    reaccionTernura:
-        - say "Son mis favoritos, siempre tienen un final increible :)"
-    terror:
-        - say "¿Que te gustaria visualizar del genero Terror?"
-        - input interes
-        - terrorP.terror(interes)
+    - libros
 
 script:
     - say "Estos son algunos géneros que te pueden gustar :)"
     - generos.generosLiterarios()
     - say "¿Qué género te gusta más {}?".format(name)
-    - input status | asign terror:Terror fantasia:Fantasia ficcion:Ficcion infantiles:Infantiles suspenso:Suspenso historicos:Historicos romance:Romance policiaco:Policiaco comedia:Comedia divulgacion:Cientifica psicologicos:Psicologicos poesia:Poesia superacion:Personal
-    - if status == "Terror" then solve terror
-    - if status == "Fantasia" then solve reaccionTernura
+    - input interes
+    - libros.libros(interes)
