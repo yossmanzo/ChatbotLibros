@@ -3,7 +3,11 @@ Proyecto para liberaración del servicio social. Elaboración de un chatbot medi
  ***
  
 ## Run
-Go to the cloned repository path and put
+Go to the cloned repository path and activate the environment
+```
+$ conda activate cv
+```
+Finally, run by putting this command 
 ```
 $ python src/chatvoice.py conversations/librosBot/mainBot.yaml
 ```
