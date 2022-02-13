@@ -5,6 +5,8 @@ Created on Sat Jan 15 22:26:38 2022
 @author: 
          Flores González Jesús Eduardo
          Manzo Ruiz Yocelyne
+         
+Objetivo: Listar los géneros disponibles en el chatbot
 """
 
 nombresGeneros = ["terror", "fantasia", "suspenso", "infantiles", "históricos", 

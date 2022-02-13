@@ -5,9 +5,24 @@ plugins:
     - generos
     - libros
 
+strategies:
+    visAutor:
+        - say "¿De qué autor quieres visualizar los libros?"
+        - input autor
+        - say "De ese autor tengo los siguientes libros"
+        - libros.autor(autor)
+    despedida:
+        - say "Si cambias de opinión seguiré aquí para ayudarte en tu búsqueda :)"
+
 script:
     - say "Estos son algunos géneros que te pueden gustar :)"
     - generos.generosLiterarios()
     - say "¿Qué género te gusta más {}?".format(name)
     - input interes
-    - libros.libros(interes)
+    - say "¿De que manera quieres que te recomiende el libro?"
+    - input forma
+    - libros.libros(interes,forma)
+    - say "¿Quieres visualizar libros de algún autor?"
+    - input respuesta | asign si:yes no:nop
+    - if respuesta == "yes" then solve visAutor
+    - if respuesta == "nop" then solve despedida
